@@ -319,17 +319,17 @@ const App = () => (
                 <h1 className="text-3xl font-bold mb-6">🛍️ Categories - Indian Products</h1>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {[
-                    {name: 'Dairy Products', items: '245 items', image: 'https://via.placeholder.com/150x150/10b981/ffffff?text=Dairy'},
-                    {name: 'Indian Snacks', items: '180 items', image: 'https://via.placeholder.com/150x150/f59e0b/ffffff?text=Snacks'},
-                    {name: 'Spices & Masala', items: '320 items', image: 'https://via.placeholder.com/150x150/ef4444/ffffff?text=Spices'},
-                    {name: 'Rice & Grains', items: '156 items', image: 'https://via.placeholder.com/150x150/8b5cf6/ffffff?text=Grains'},
-                    {name: 'Fresh Vegetables', items: '290 items', image: 'https://via.placeholder.com/150x150/22c55e/ffffff?text=Veggies'},
-                    {name: 'Indian Sweets', items: '95 items', image: 'https://via.placeholder.com/150x150/f97316/ffffff?text=Sweets'},
-                    {name: 'Beverages', items: '134 items', image: 'https://via.placeholder.com/150x150/06b6d4/ffffff?text=Drinks'},
-                    {name: 'Ready to Cook', items: '78 items', image: 'https://via.placeholder.com/150x150/ec4899/ffffff?text=Ready'}
+                    {name: 'Dairy Products', items: '245 items', image: 'https://images.unsplash.com/photo-1563379091339-03246963d17f?w=300&h=300&fit=crop'},
+                    {name: 'Indian Snacks', items: '180 items', image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=300&h=300&fit=crop'},
+                    {name: 'Spices & Masala', items: '320 items', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=300&h=300&fit=crop'},
+                    {name: 'Rice & Grains', items: '156 items', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&h=300&fit=crop'},
+                    {name: 'Fresh Vegetables', items: '290 items', image: 'https://images.unsplash.com/photo-1609501676725-7186f734c2b8?w=300&h=300&fit=crop'},
+                    {name: 'Indian Sweets', items: '95 items', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop'},
+                    {name: 'Beverages', items: '134 items', image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=300&fit=crop'},
+                    {name: 'Ready to Cook', items: '78 items', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=300&fit=crop'}
                   ].map((category, index) => (
                     <div key={index} className="bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer">
-                      <img src={category.image} alt={category.name} className="w-full rounded-lg mb-3" />
+                      <img src={category.image} alt={category.name} className="w-full h-32 object-cover rounded-lg mb-3" />
                       <h3 className="font-semibold">{category.name}</h3>
                       <p className="text-sm text-muted-foreground">{category.items}</p>
                     </div>
