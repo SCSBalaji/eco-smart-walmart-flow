@@ -1,225 +1,263 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import {
-  AlertTriangle,
   TrendingUp,
-  Heart,
+  TrendingDown,
   Package,
-  BarChart3,
+  AlertTriangle,
   MapPin,
-  Clock,
-  DollarSign,
-  Recycle,
+  Heart,
   Users,
+  IndianRupee,
+  Clock,
+  Zap,
+  Target,
+  Award,
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const dashboardStats = [
-    { title: 'Food Waste Reduced', value: '30%', icon: Recycle, color: 'success-gradient' },
-    { title: 'Items Donated', value: '2,847', icon: Heart, color: 'warning-gradient' },
-    { title: 'Revenue Saved', value: '$47K', icon: DollarSign, color: 'walmart-gradient' },
-    { title: 'Active Subscriptions', value: '1,204', icon: Users, color: 'success-gradient' },
+  const quickStats = [
+    { title: 'Total Revenue', value: '₹12.7 Cr', change: '+18%', positive: true, icon: IndianRupee },
+    { title: 'Waste Reduced', value: '2,340 kg', change: '+15%', positive: true, icon: TrendingDown },
+    { title: 'Items Near Expiry', value: '156', change: '-12%', positive: true, icon: Clock },
+    { title: 'Active Donations', value: '24', change: '+8%', positive: true, icon: Heart },
   ];
 
-  const expiringItems = [
-    { name: 'Fresh Vegetables Bundle', expires: '2 days', discount: '40%', category: 'Produce' },
-    { name: 'Dairy Products Pack', expires: '1 day', discount: '60%', category: 'Dairy' },
-    { name: 'Bakery Fresh Bread', expires: '6 hours', discount: '70%', category: 'Bakery' },
+  const nearExpiryItems = [
+    { name: 'Amul Fresh Paneer', category: 'Dairy', expiry: '2 days', price: '₹85', discount: '30%', location: 'Mumbai Store' },
+    { name: 'Haldiram Samosas', category: 'Snacks', expiry: '1 day', price: '₹120', discount: '50%', location: 'Delhi Store' },
+    { name: 'Mother Dairy Milk', category: 'Dairy', expiry: '3 days', price: '₹56', discount: '20%', location: 'Bangalore Store' },
+    { name: 'Britannia Bread', category: 'Bakery', expiry: '1 day', price: '₹35', discount: '40%', location: 'Chennai Store' },
   ];
 
-  const inventoryHealth = [
-    { category: 'Produce', health: 85, status: 'Good' },
-    { category: 'Dairy', health: 65, status: 'Warning' },
-    { category: 'Meat', health: 90, status: 'Excellent' },
-    { category: 'Bakery', health: 45, status: 'Critical' },
+  const geoData = [
+    { city: 'Mumbai', demand: 'High', surplus: '₹2.3L', stores: 12 },
+    { city: 'Delhi', demand: 'Medium', surplus: '₹1.8L', stores: 8 },
+    { city: 'Bangalore', demand: 'High', surplus: '₹2.1L', stores: 10 },
+    { city: 'Hyderabad', demand: 'Low', surplus: '₹0.9L', stores: 6 },
+  ];
+
+  const subscriptionPlans = [
+    { name: 'Smart Essentials', price: '₹299/month', subscribers: '2,340', growth: '+12%' },
+    { name: 'Family Plus', price: '₹599/month', subscribers: '1,890', growth: '+18%' },
+    { name: 'Premium Box', price: '₹999/month', subscribers: '945', growth: '+25%' },
   ];
 
   return (
-    <Layout showSidebar={false}>
-      <div className="p-6 space-y-6">
-        {/* Welcome Banner */}
-        <div className="walmart-gradient text-white rounded-lg p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold mb-2">Welcome to Walmart Smart Inventory Hub</h1>
-              <p className="text-lg opacity-90">
-                Reducing waste, maximizing profits, and supporting communities through AI-driven inventory management
-              </p>
-            </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold">92%</div>
-              <div className="text-sm opacity-80">System Health Score</div>
-            </div>
-          </div>
+    <Layout>
+      <div className="p-6 space-y-8 bg-gradient-to-br from-blue-50 to-yellow-50">
+        {/* Header Section */}
+        <div className="text-center space-y-2">
+          <h1 className="text-4xl font-bold text-gray-900 flex items-center justify-center gap-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png" 
+                 alt="India Flag" className="h-8 w-12 rounded shadow-sm" />
+            Walmart India Smart Dashboard
+            <Award className="h-8 w-8 text-yellow-500" />
+          </h1>
+          <p className="text-lg text-muted-foreground">
+            AI-Powered Inventory Management | Reducing Food Waste Across India
+          </p>
         </div>
 
-        {/* Key Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {dashboardStats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <Card key={index} className="relative overflow-hidden">
-                <div className={`absolute inset-0 ${stat.color} opacity-10`}></div>
-                <CardHeader className="pb-2">
-                  <div className="flex items-center justify-between">
-                    <Icon className="h-6 w-6 text-primary" />
-                    <Badge variant="secondary">{stat.value}</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-semibold text-sm">{stat.title}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {quickStats.map((stat, index) => (
+            <Card key={index} className="hover:shadow-lg transition-all duration-200 hover:scale-105">
+              <CardHeader className="pb-2">
+                <div className="flex items-center justify-between">
+                  <stat.icon className="h-5 w-5 text-primary" />
+                  <Badge variant={stat.positive ? "default" : "destructive"}>
+                    {stat.change}
+                  </Badge>
+                </div>
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  {stat.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-primary">{stat.value}</div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         {/* Main Dashboard Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Expiring Soon Alert */}
-          <Card className="lg:col-span-1">
+          {/* Near Expiry Items */}
+          <Card className="lg:col-span-2">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5 text-destructive" />
-                Items Expiring Soon
-              </CardTitle>
-              <CardDescription>Take immediate action to prevent waste</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {expiringItems.map((item, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-lg">
-                  <div>
-                    <p className="font-medium text-sm">{item.name}</p>
-                    <p className="text-xs text-muted-foreground">Expires in {item.expires}</p>
-                  </div>
-                  <div className="text-right">
-                    <Badge variant="destructive">{item.discount} OFF</Badge>
-                    <p className="text-xs text-muted-foreground mt-1">{item.category}</p>
-                  </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5 text-orange-500" />
+                    Items Near Expiry - Take Action
+                  </CardTitle>
+                  <CardDescription>Products requiring immediate attention across India stores</CardDescription>
                 </div>
-              ))}
-              <Link to="/expiry-tracking">
-                <Button className="w-full" variant="outline">
-                  View All Expiring Items
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          {/* Inventory Health */}
-          <Card className="lg:col-span-1">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BarChart3 className="h-5 w-5 text-primary" />
-                Inventory Health
-              </CardTitle>
-              <CardDescription>Category-wise inventory status</CardDescription>
+                <Link to="/expiry-tracking">
+                  <Button variant="outline" size="sm">View All</Button>
+                </Link>
+              </div>
             </CardHeader>
-            <CardContent className="space-y-4">
-              {inventoryHealth.map((category, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">{category.category}</span>
-                    <Badge 
-                      variant={
-                        category.status === 'Excellent' ? 'default' :
-                        category.status === 'Good' ? 'secondary' :
-                        category.status === 'Warning' ? 'outline' : 'destructive'
-                      }
-                    >
-                      {category.status}
-                    </Badge>
+            <CardContent>
+              <div className="space-y-4">
+                {nearExpiryItems.map((item, index) => (
+                  <div key={index} className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3">
+                        <img src={`https://via.placeholder.com/40x40/4f46e5/ffffff?text=${item.category.charAt(0)}`} 
+                             alt={item.category} className="rounded" />
+                        <div>
+                          <h4 className="font-semibold">{item.name}</h4>
+                          <p className="text-sm text-muted-foreground">{item.location} • {item.category}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-right space-y-1">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="destructive" className="text-xs">{item.expiry}</Badge>
+                        <Badge variant="secondary" className="text-xs">{item.discount} OFF</Badge>
+                      </div>
+                      <p className="font-semibold text-green-600">{item.price}</p>
+                    </div>
                   </div>
-                  <Progress value={category.health} className="h-2" />
-                  <p className="text-xs text-muted-foreground">{category.health}% optimal</p>
-                </div>
-              ))}
-              <Link to="/ai-inventory">
-                <Button className="w-full" variant="outline">
-                  View AI Insights
-                </Button>
-              </Link>
+                ))}
+              </div>
             </CardContent>
           </Card>
 
           {/* Quick Actions */}
-          <Card className="lg:col-span-1">
+          <Card>
             <CardHeader>
-              <CardTitle>Quick Actions</CardTitle>
-              <CardDescription>Access key features instantly</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <Zap className="h-5 w-5 text-yellow-500" />
+                Quick Actions
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <Link to="/dynamic-discounting">
-                <Button className="w-full justify-start" variant="outline">
-                  <TrendingUp className="h-4 w-4 mr-2" />
+              <Link to="/dynamic-discounting" className="block">
+                <Button className="w-full justify-start bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                  <Target className="h-4 w-4 mr-2" />
                   Dynamic Discounting
                 </Button>
               </Link>
-              <Link to="/geo-redistribution">
-                <Button className="w-full justify-start" variant="outline">
+              <Link to="/geo-redistribution" className="block">
+                <Button variant="outline" className="w-full justify-start">
                   <MapPin className="h-4 w-4 mr-2" />
                   Geo Redistribution
                 </Button>
               </Link>
-              <Link to="/donations">
-                <Button className="w-full justify-start" variant="outline">
+              <Link to="/donations" className="block">
+                <Button variant="outline" className="w-full justify-start">
                   <Heart className="h-4 w-4 mr-2" />
                   Food Donations
                 </Button>
               </Link>
-              <Link to="/subscriptions">
-                <Button className="w-full justify-start" variant="outline">
+              <Link to="/ai-inventory" className="block">
+                <Button variant="outline" className="w-full justify-start">
                   <Package className="h-4 w-4 mr-2" />
-                  Subscription Packages
+                  AI Inventory Balance
                 </Button>
               </Link>
             </CardContent>
           </Card>
         </div>
 
-        {/* Subscription Offers Banner */}
-        <Card className="bg-gradient-to-r from-primary to-secondary text-white">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-xl font-bold mb-2">🎁 Weekly Smart Box Subscription</h3>
-                <p className="opacity-90">Get curated surplus food boxes with up to 50% savings!</p>
+        {/* Geo Distribution & Subscriptions */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Geo Distribution */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-green-500" />
+                Geo Distribution - Indian Cities
+              </CardTitle>
+              <CardDescription>Surplus inventory across major Indian cities</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {geoData.map((city, index) => (
+                  <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <img src={`https://via.placeholder.com/32x32/10b981/ffffff?text=${city.city.charAt(0)}`} 
+                           alt={city.city} className="rounded-full" />
+                      <div>
+                        <h4 className="font-semibold">{city.city}</h4>
+                        <p className="text-sm text-muted-foreground">{city.stores} stores</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <Badge variant={city.demand === 'High' ? 'default' : city.demand === 'Medium' ? 'secondary' : 'outline'}>
+                        {city.demand} Demand
+                      </Badge>
+                      <p className="text-sm font-semibold text-green-600">{city.surplus}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="text-right">
-                <Link to="/subscriptions">
-                  <Button variant="secondary" size="lg">
-                    Subscribe Now
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
 
-        {/* Rescue Near-Expiry Items Banner */}
-        <Card className="border-2 border-destructive/50 bg-destructive/5">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="pulse-glow bg-destructive/20 p-3 rounded-full">
-                  <Clock className="h-6 w-6 text-destructive" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-destructive">🚨 Rescue Near-Expiry Items</h3>
-                  <p className="text-muted-foreground">47 items need immediate attention</p>
-                </div>
+          {/* Subscription Plans */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Users className="h-5 w-5 text-blue-500" />
+                Subscription Plans Performance
+              </CardTitle>
+              <CardDescription>Customer subscription analytics</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {subscriptionPlans.map((plan, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold">{plan.name}</h4>
+                        <p className="text-sm text-muted-foreground">{plan.price}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-semibold">{plan.subscribers}</p>
+                        <Badge variant="default" className="text-xs">{plan.growth}</Badge>
+                      </div>
+                    </div>
+                    <Progress value={75 + index * 5} className="h-2" />
+                  </div>
+                ))}
               </div>
-              <div className="text-right space-x-2">
-                <Link to="/expiry-tracking">
-                  <Button variant="destructive">
-                    Take Action
-                  </Button>
-                </Link>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Sustainability Impact */}
+        <Card className="bg-gradient-to-r from-green-500 to-blue-600 text-white">
+          <CardHeader>
+            <CardTitle className="text-xl flex items-center gap-2">
+              🌱 Sustainability Impact - India Initiative
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <h3 className="text-2xl font-bold">2,340 kg</h3>
+                <p className="text-green-100">Food Waste Prevented</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-2xl font-bold">₹12.7 Cr</h3>
+                <p className="text-green-100">Revenue Recovered</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-2xl font-bold">18,500</h3>
+                <p className="text-green-100">Meals Donated</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-2xl font-bold">34%</h3>
+                <p className="text-green-100">Waste Reduction</p>
               </div>
             </div>
           </CardContent>

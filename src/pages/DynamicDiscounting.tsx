@@ -10,111 +10,135 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   TrendingUp,
   TrendingDown,
-  DollarSign,
+  IndianRupee,
   Percent,
   Clock,
   Target,
   Zap,
   BarChart3,
+  MapPin,
 } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 
 const DynamicDiscounting = () => {
   const [autoDiscounting, setAutoDiscounting] = useState(true);
-  const [discountRange, setDiscountRange] = useState([20]);
+  const [discountRange, setDiscountRange] = useState([25]);
 
   const discountRules = [
     {
       id: 1,
-      name: 'Expiry Based Discount',
+      name: 'Expiry Based Discount - Indian Products',
       condition: 'Days to expiry ≤ 2',
-      discount: '50-70%',
+      discount: '40-60%',
       status: 'active',
-      performance: '+15% conversion',
-      items: 23,
+      performance: '+22% conversion',
+      items: 45,
     },
     {
       id: 2,
-      name: 'Seasonal Clearance',
-      condition: 'Summer items in Fall',
-      discount: '30-60%',
+      name: 'Festival Clearance - Diwali',
+      condition: 'Post-festival items',
+      discount: '30-50%',
       status: 'active',
-      performance: '+22% revenue',
-      items: 67,
+      performance: '+18% revenue',
+      items: 89,
     },
     {
       id: 3,
-      name: 'Overstock Liquidation',
+      name: 'Regional Overstock - South India',
       condition: 'Inventory > 150% of avg',
-      discount: '25-45%',
+      discount: '25-40%',
       status: 'paused',
-      performance: '+8% turnover',
-      items: 12,
+      performance: '+12% turnover',
+      items: 23,
     },
     {
       id: 4,
-      name: 'Loyalty Member Boost',
-      condition: 'Premium members',
-      discount: '10-25%',
+      name: 'Monsoon Special - Mumbai',
+      condition: 'Weather-based demand',
+      discount: '15-30%',
       status: 'active',
-      performance: '+31% retention',
-      items: 156,
+      performance: '+28% retention',
+      items: 67,
     },
   ];
 
   const performanceMetrics = [
-    { title: 'Revenue Recovery', value: '$127K', change: '+18%', positive: true },
-    { title: 'Waste Reduction', value: '34%', change: '+12%', positive: true },
-    { title: 'Conversion Rate', value: '23%', change: '+7%', positive: true },
-    { title: 'Average Discount', value: '42%', change: '-3%', positive: true },
+    { title: 'Revenue Recovery', value: '₹8.4 Cr', change: '+22%', positive: true },
+    { title: 'Waste Reduction', value: '28%', change: '+15%', positive: true },
+    { title: 'Conversion Rate', value: '31%', change: '+9%', positive: true },
+    { title: 'Average Discount', value: '38%', change: '-2%', positive: true },
   ];
 
   const activeDiscounts = [
     {
       id: 1,
-      product: 'Organic Banana Bundle',
-      originalPrice: 4.99,
-      discountedPrice: 2.49,
-      discount: 50,
+      product: 'Amul Fresh Paneer 200g',
+      originalPrice: 89,
+      discountedPrice: 45,
+      discount: 49,
       reason: 'Expiring in 1 day',
       demand: 'High',
-      category: 'Produce',
+      category: 'Dairy',
+      location: 'Mumbai',
+      image: 'https://via.placeholder.com/60x60/4f46e5/ffffff?text=P'
     },
     {
       id: 2,
-      product: 'Fresh Salmon Fillets',
-      originalPrice: 12.99,
-      discountedPrice: 7.79,
+      product: 'Haldiram Samosa Pack',
+      originalPrice: 120,
+      discountedPrice: 72,
       discount: 40,
-      reason: 'Low demand prediction',
+      reason: 'Low demand in Chennai',
       demand: 'Medium',
-      category: 'Seafood',
+      category: 'Snacks',
+      location: 'Chennai',
+      image: 'https://via.placeholder.com/60x60/059669/ffffff?text=S'
     },
     {
       id: 3,
-      product: 'Artisan Sourdough',
-      originalPrice: 5.49,
-      discountedPrice: 1.65,
-      discount: 70,
+      product: 'Mother Dairy Curd 400g',
+      originalPrice: 65,
+      discountedPrice: 20,
+      discount: 69,
       reason: 'Same day expiry',
       demand: 'Low',
-      category: 'Bakery',
+      category: 'Dairy',
+      location: 'Delhi',
+      image: 'https://via.placeholder.com/60x60/dc2626/ffffff?text=C'
+    },
+    {
+      id: 4,
+      product: 'Britannia Good Day Biscuits',
+      originalPrice: 45,
+      discountedPrice: 27,
+      discount: 40,
+      reason: 'Festival overstock',
+      demand: 'High',
+      category: 'Biscuits',
+      location: 'Bangalore',
+      image: 'https://via.placeholder.com/60x60/7c3aed/ffffff?text=B'
     },
   ];
 
   return (
     <Layout>
-      <div className="p-6 space-y-6">
+      <div className="p-6 space-y-6 bg-gradient-to-br from-blue-50 to-yellow-50">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Dynamic Discounting Model</h1>
-            <p className="text-muted-foreground mt-1">
-              AI-powered pricing optimization to maximize revenue and reduce waste
+            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+              <Target className="h-8 w-8 text-primary" />
+              Dynamic Discounting - India
+            </h1>
+            <p className="text-muted-foreground mt-1 flex items-center gap-2">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png" 
+                   alt="India" className="h-4 w-6 rounded" />
+              AI-powered pricing optimization across Indian stores
             </p>
           </div>
           <div className="flex gap-2">
-            <Button>
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600">
               <Zap className="h-4 w-4 mr-2" />
               Run AI Analysis
             </Button>
@@ -128,12 +152,13 @@ const DynamicDiscounting = () => {
         {/* Performance Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {performanceMetrics.map((metric, index) => (
-            <Card key={index}>
+            <Card key={index} className="hover:shadow-lg transition-all duration-200">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                  <IndianRupee className="h-4 w-4" />
                   {metric.title}
                 </CardTitle>
-                <div className="text-2xl font-bold">{metric.value}</div>
+                <div className="text-2xl font-bold text-primary">{metric.value}</div>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center gap-2">
@@ -165,37 +190,42 @@ const DynamicDiscounting = () => {
           <TabsContent value="active-discounts" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Currently Active Discounts</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Percent className="h-5 w-5 text-green-500" />
+                  Currently Active Discounts - Indian Products
+                </CardTitle>
                 <CardDescription>
-                  Real-time discounts applied by AI based on expiry, demand, and inventory levels
+                  Real-time discounts applied by AI across Indian stores
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {activeDiscounts.map((item) => (
-                    <div key={item.id} className="border rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <div>
+                    <div key={item.id} className="border rounded-lg p-4 hover:shadow-md transition-all duration-200">
+                      <div className="flex items-start gap-4 mb-4">
+                        <img src={item.image} alt={item.product} className="rounded-lg" />
+                        <div className="flex-1">
                           <h3 className="font-semibold text-lg">{item.product}</h3>
-                          <p className="text-sm text-muted-foreground">{item.category}</p>
-                        </div>
-                        <div className="text-right">
-                          <Badge variant="secondary" className="mb-2">
-                            {item.discount}% OFF
-                          </Badge>
-                          <div className="text-sm text-muted-foreground">
-                            Demand: {item.demand}
+                          <div className="flex items-center gap-2 mt-1">
+                            <Badge variant="outline">{item.category}</Badge>
+                            <Badge variant="secondary" className="flex items-center gap-1">
+                              <MapPin className="h-3 w-3" />
+                              {item.location}
+                            </Badge>
                           </div>
                         </div>
+                        <Badge variant="destructive" className="text-lg">
+                          {item.discount}% OFF
+                        </Badge>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                      <div className="grid grid-cols-3 gap-4 mb-4">
                         <div>
                           <label className="text-sm font-medium text-muted-foreground">
                             Original Price
                           </label>
                           <div className="text-lg font-semibold line-through text-muted-foreground">
-                            ${item.originalPrice}
+                            ₹{item.originalPrice}
                           </div>
                         </div>
                         <div>
@@ -203,34 +233,35 @@ const DynamicDiscounting = () => {
                             Discounted Price
                           </label>
                           <div className="text-lg font-semibold text-green-600">
-                            ${item.discountedPrice}
+                            ₹{item.discountedPrice}
                           </div>
                         </div>
                         <div>
                           <label className="text-sm font-medium text-muted-foreground">
-                            Savings
+                            You Save
                           </label>
                           <div className="text-lg font-semibold text-primary">
-                            ${(item.originalPrice - item.discountedPrice).toFixed(2)}
+                            ₹{item.originalPrice - item.discountedPrice}
                           </div>
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium text-muted-foreground">
-                            AI Reason
-                          </label>
-                          <div className="text-sm font-medium">{item.reason}</div>
                         </div>
                       </div>
 
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground">AI Reason</p>
+                          <p className="font-medium">{item.reason}</p>
+                        </div>
+                        <Badge variant={item.demand === 'High' ? 'default' : item.demand === 'Medium' ? 'secondary' : 'outline'}>
+                          {item.demand} Demand
+                        </Badge>
+                      </div>
+
                       <div className="flex gap-2">
-                        <Button size="sm" variant="outline">
+                        <Button size="sm" variant="outline" className="flex-1">
                           Adjust Discount
                         </Button>
-                        <Button size="sm" variant="outline">
+                        <Button size="sm" variant="outline" className="flex-1">
                           View Analytics
-                        </Button>
-                        <Button size="sm" variant="destructive">
-                          Remove Discount
                         </Button>
                       </div>
                     </div>
@@ -243,15 +274,18 @@ const DynamicDiscounting = () => {
           <TabsContent value="discount-rules" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Discount Rules & Automation</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Target className="h-5 w-5 text-blue-500" />
+                  Discount Rules & Automation - India
+                </CardTitle>
                 <CardDescription>
-                  Configure AI-driven discount rules based on various conditions
+                  Configure AI-driven discount rules for Indian market conditions
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {discountRules.map((rule) => (
-                    <div key={rule.id} className="border rounded-lg p-4">
+                    <div key={rule.id} className="border rounded-lg p-4 hover:shadow-md transition-all duration-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <h3 className="font-semibold">{rule.name}</h3>
@@ -321,9 +355,9 @@ const DynamicDiscounting = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>AI Configuration</CardTitle>
+                  <CardTitle>AI Configuration - India</CardTitle>
                   <CardDescription>
-                    Configure how the AI calculates and applies discounts
+                    Configure AI for Indian market conditions and pricing
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -338,7 +372,7 @@ const DynamicDiscounting = () => {
                       />
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Automatically apply AI-suggested discounts without manual approval
+                      Automatically apply AI-suggested discounts for Indian products
                     </p>
                   </div>
 
@@ -349,7 +383,7 @@ const DynamicDiscounting = () => {
                     <Slider
                       value={discountRange}
                       onValueChange={setDiscountRange}
-                      max={80}
+                      max={70}
                       min={10}
                       step={5}
                       className="w-full"
@@ -361,11 +395,11 @@ const DynamicDiscounting = () => {
 
                   <div className="space-y-3">
                     <label className="text-sm font-medium">
-                      Minimum Profit Margin
+                      Minimum Profit Margin (%)
                     </label>
-                    <Input type="number" placeholder="15" className="w-full" />
+                    <Input type="number" placeholder="12" className="w-full" />
                     <p className="text-sm text-muted-foreground">
-                      Maintain at least this profit margin percentage
+                      Maintain at least this profit margin for Indian operations
                     </p>
                   </div>
                 </CardContent>
@@ -373,87 +407,46 @@ const DynamicDiscounting = () => {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Discount Factors</CardTitle>
+                  <CardTitle>Indian Market Factors</CardTitle>
                   <CardDescription>
-                    Weight different factors in AI discount calculations
+                    Weight different factors for Indian market dynamics
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <label className="text-sm font-medium">Days to Expiry</label>
-                      <span className="text-sm text-muted-foreground">70%</span>
+                      <label className="text-sm font-medium">Festival Seasons</label>
+                      <span className="text-sm text-muted-foreground">80%</span>
                     </div>
-                    <Slider defaultValue={[70]} max={100} step={5} className="w-full" />
+                    <Slider defaultValue={[80]} max={100} step={5} className="w-full" />
                   </div>
 
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <label className="text-sm font-medium">Demand Prediction</label>
-                      <span className="text-sm text-muted-foreground">50%</span>
+                      <label className="text-sm font-medium">Regional Preferences</label>
+                      <span className="text-sm text-muted-foreground">65%</span>
                     </div>
-                    <Slider defaultValue={[50]} max={100} step={5} className="w-full" />
+                    <Slider defaultValue={[65]} max={100} step={5} className="w-full" />
                   </div>
 
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <label className="text-sm font-medium">Inventory Level</label>
-                      <span className="text-sm text-muted-foreground">30%</span>
+                      <label className="text-sm font-medium">Weather Impact</label>
+                      <span className="text-sm text-muted-foreground">45%</span>
                     </div>
-                    <Slider defaultValue={[30]} max={100} step={5} className="w-full" />
+                    <Slider defaultValue={[45]} max={100} step={5} className="w-full" />
                   </div>
 
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <label className="text-sm font-medium">Seasonal Trends</label>
-                      <span className="text-sm text-muted-foreground">40%</span>
+                      <label className="text-sm font-medium">Local Competition</label>
+                      <span className="text-sm text-muted-foreground">55%</span>
                     </div>
-                    <Slider defaultValue={[40]} max={100} step={5} className="w-full" />
+                    <Slider defaultValue={[55]} max={100} step={5} className="w-full" />
                   </div>
                 </CardContent>
               </Card>
             </div>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Notification Settings</CardTitle>
-                <CardDescription>
-                  Configure alerts for discount events and performance
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium">High Impact Discounts</label>
-                      <Switch defaultChecked />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium">Daily Performance Summary</label>
-                      <Switch defaultChecked />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium">Discount Rule Triggers</label>
-                      <Switch />
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium">Revenue Alerts</label>
-                      <Switch defaultChecked />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium">Inventory Clearance</label>
-                      <Switch defaultChecked />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium">Customer Response Metrics</label>
-                      <Switch />
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </TabsContent>
         </Tabs>
       </div>
