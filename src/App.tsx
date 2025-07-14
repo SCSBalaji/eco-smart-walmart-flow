@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ExpiryTracking from "./pages/ExpiryTracking";
 import DynamicDiscounting from "./pages/DynamicDiscounting";
+import Alerts from "./pages/Alerts";
+import CustomerAnalytics from "./pages/CustomerAnalytics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -375,8 +376,8 @@ const App = () => (
               </div>
             </div>
           } />
-          <Route path="/alerts" element={<div className="p-6"><h1 className="text-2xl font-bold">🚨 Alerts & Notifications - India</h1></div>} />
-          <Route path="/analytics" element={<div className="p-6"><h1 className="text-2xl font-bold">📊 Customer Analytics - India</h1></div>} />
+          <Route path="/alerts" element={<Alerts />} />
+          <Route path="/analytics" element={<CustomerAnalytics />} />
           <Route path="/settings" element={<div className="p-6"><h1 className="text-2xl font-bold">⚙️ Settings - India Configuration</h1></div>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
