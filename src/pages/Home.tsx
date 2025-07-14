@@ -48,6 +48,12 @@ const Home = () => {
     { name: 'Premium Box', price: '₹999/month', subscribers: '945', growth: '+25%' },
   ];
 
+  // Toast for feedback
+  const handleViewAll = () => {
+    if (window && window.dispatchEvent) {
+      window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Navigating to Expiry Tracking...' } }));
+    }
+  };
   return (
     <Layout>
       <div className="p-6 space-y-8 bg-gradient-to-br from-blue-50 to-yellow-50">
@@ -100,7 +106,7 @@ const Home = () => {
                   <CardDescription>Products requiring immediate attention across India stores</CardDescription>
                 </div>
                 <Link to="/expiry-tracking">
-                  <Button variant="outline" size="sm">View All</Button>
+                  <Button variant="outline" size="sm" onClick={handleViewAll}>View All</Button>
                 </Link>
               </div>
             </CardHeader>
@@ -110,11 +116,19 @@ const Home = () => {
                   <div key={index} className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors">
                     <div className="flex-1">
                       <div className="flex items-center gap-3">
-                        <img src={`https://via.placeholder.com/40x40/4f46e5/ffffff?text=${item.category.charAt(0)}`} 
-                             alt={item.category} className="rounded" />
+                        <img
+                          src={
+                            item.category === 'Dairy' ? 'https://t3.ftcdn.net/jpg/01/57/03/60/360_F_157036026_9tMnjyVOQ3kjAoQtx8wStEHZVuii1Tq1.jpg?w=80&h=80&fit=crop' :
+                            item.category === 'Snacks' ? 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=80&h=80&fit=crop' :
+                            item.category === 'Bakery' ? 'https://cdn.zeptonow.com/production/ik-seo/tr:w-640,ar-1000-1000,pr-true,f-auto,q-80/cms/product_variant/c97ae948-133d-419b-bf02-66fbad14aabe/Britannia-100-Whole-Wheat-Bread-No-Maida-.jpeg?w=80&h=80&fit=crop' :
+                            'https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?w=80&h=80&fit=crop'
+                          }
+                          alt={item.category}
+                          className="rounded w-10 h-10 object-cover"
+                        />
                         <div>
                           <h4 className="font-semibold">{item.name}</h4>
-                          <p className="text-sm text-muted-foreground">{item.location} • {item.category}</p>
+                          <p className="text-sm text-muted-foreground">{item.location}  {item.category}</p>
                         </div>
                       </div>
                     </div>
@@ -141,25 +155,25 @@ const Home = () => {
             </CardHeader>
             <CardContent className="space-y-3">
               <Link to="/dynamic-discounting" className="block">
-                <Button className="w-full justify-start bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                <Button className="w-full justify-start bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" aria-label="Go to Dynamic Discounting">
                   <Target className="h-4 w-4 mr-2" />
                   Dynamic Discounting
                 </Button>
               </Link>
               <Link to="/geo-redistribution" className="block">
-                <Button variant="outline" className="w-full justify-start">
+                <Button variant="outline" className="w-full justify-start" aria-label="Go to Geo Redistribution">
                   <MapPin className="h-4 w-4 mr-2" />
                   Geo Redistribution
                 </Button>
               </Link>
               <Link to="/donations" className="block">
-                <Button variant="outline" className="w-full justify-start">
+                <Button variant="outline" className="w-full justify-start" aria-label="Go to Food Donations">
                   <Heart className="h-4 w-4 mr-2" />
                   Food Donations
                 </Button>
               </Link>
               <Link to="/ai-inventory" className="block">
-                <Button variant="outline" className="w-full justify-start">
+                <Button variant="outline" className="w-full justify-start" aria-label="Go to AI Inventory Balance">
                   <Package className="h-4 w-4 mr-2" />
                   AI Inventory Balance
                 </Button>
@@ -184,8 +198,17 @@ const Home = () => {
                 {geoData.map((city, index) => (
                   <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
                     <div className="flex items-center gap-3">
-                      <img src={`https://via.placeholder.com/32x32/10b981/ffffff?text=${city.city.charAt(0)}`} 
-                           alt={city.city} className="rounded-full" />
+                      <img
+                        src={
+                          city.city === 'Mumbai' ? 'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=64&h=64&fit=crop' :
+                          city.city === 'Delhi' ? 'https://images.unsplash.com/photo-1464983953574-0892a716854b?w=64&h=64&fit=crop' :
+                          city.city === 'Bangalore' ? 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=64&h=64&fit=crop' :
+                          city.city === 'Hyderabad' ? 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=64&h=64&fit=crop' :
+                          'https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?w=64&h=64&fit=crop'
+                        }
+                        alt={city.city}
+                        className="rounded-full"
+                      />
                       <div>
                         <h4 className="font-semibold">{city.city}</h4>
                         <p className="text-sm text-muted-foreground">{city.stores} stores</p>

@@ -203,7 +203,17 @@ const DynamicDiscounting = () => {
                   {activeDiscounts.map((item) => (
                     <div key={item.id} className="border rounded-lg p-4 hover:shadow-md transition-all duration-200">
                       <div className="flex items-start gap-4 mb-4">
-                        <img src={item.image} alt={item.product} className="rounded-lg" />
+                        <img
+                          src={
+                            item.product.includes('Paneer') ? 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?w=80&h=80&fit=crop' :
+                            item.product.includes('Samosa') ? 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=80&h=80&fit=crop' :
+                            item.product.includes('Milk') ? 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?w=80&h=80&fit=crop' :
+                            item.product.includes('Bread') ? 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=80&h=80&fit=crop' :
+                            'https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?w=80&h=80&fit=crop'
+                          }
+                          alt={item.product}
+                          className="rounded-lg"
+                        />
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg">{item.product}</h3>
                           <div className="flex items-center gap-2 mt-1">

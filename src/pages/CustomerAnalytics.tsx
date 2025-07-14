@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Users, TrendingUp, ShoppingCart, Heart, MapPin, Calendar, Filter, Download, Eye, BarChart3, PieChart, Activity } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart as RechartsPieChart, Cell } from 'recharts';
+import { Pie } from 'recharts';
 import Layout from '../components/layout/Layout';
 
 const CustomerAnalytics = () => {

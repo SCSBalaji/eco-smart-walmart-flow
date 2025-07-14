@@ -63,7 +63,6 @@ const Sidebar = () => {
               {section.items.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.path;
-                
                 return (
                   <Link
                     key={item.path}
@@ -73,6 +72,8 @@ const Sidebar = () => {
                         ? 'bg-sidebar-accent text-sidebar-primary'
                         : 'text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground'
                     }`}
+                    aria-label={item.name}
+                    title={item.name}
                   >
                     <Icon className="h-4 w-4" />
                     <span>{item.name}</span>

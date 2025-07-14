@@ -33,7 +33,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="https://logos-world.net/wp-content/uploads/2020/09/Walmart-Logo.png" 
+              src="/walmart-logo.png" 
               alt="Walmart India" 
               className="h-10 w-auto bg-white p-1 rounded"
             />
