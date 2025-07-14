@@ -21,29 +21,73 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/expiry-tracking" element={<ExpiryTracking />} />
           <Route path="/dynamic-discounting" element={<DynamicDiscounting />} />
-          {/* Placeholder routes for other features */}
+          {/* Enhanced pages with proper images */}
           <Route path="/geo-redistribution" element={
             <div className="p-6 bg-gradient-to-br from-blue-50 to-yellow-50 min-h-screen">
-              <div className="max-w-4xl mx-auto">
-                <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
+              <div className="max-w-6xl mx-auto">
+                <h1 className="text-4xl font-bold mb-6 flex items-center gap-3">
                   🗺️ Geo-Target Redistribution - India
+                  <span className="text-2xl">🇮🇳</span>
                 </h1>
-                <div className="bg-white rounded-lg p-6 shadow-lg">
-                  <img src="https://maps.googleapis.com/maps/api/staticmap?center=India&zoom=5&size=800x400&maptype=roadmap&markers=color:red%7Clabel:M%7C19.0760,72.8777&markers=color:blue%7Clabel:D%7C28.7041,77.1025&markers=color:green%7Clabel:B%7C12.9716,77.5946&key=demo" 
-                       alt="India Geo Distribution" className="w-full rounded-lg mb-4" />
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="text-center p-4 bg-red-50 rounded">
-                      <h3 className="font-bold text-red-600">Mumbai</h3>
-                      <p>High Surplus: ₹2.3L</p>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-white rounded-lg p-6 shadow-lg">
+                    <h2 className="text-2xl font-semibold mb-4">India Distribution Map</h2>
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop" 
+                         alt="India Map Distribution" className="w-full h-64 object-cover rounded-lg mb-4" />
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-4 bg-red-50 rounded-lg">
+                        <h3 className="font-bold text-red-600">Mumbai</h3>
+                        <p className="text-sm">High Surplus</p>
+                        <p className="font-semibold text-green-600">₹2.3L</p>
+                      </div>
+                      <div className="text-center p-4 bg-blue-50 rounded-lg">
+                        <h3 className="font-bold text-blue-600">Delhi</h3>
+                        <p className="text-sm">Medium Demand</p>
+                        <p className="font-semibold text-green-600">₹1.8L</p>
+                      </div>
                     </div>
-                    <div className="text-center p-4 bg-blue-50 rounded">
-                      <h3 className="font-bold text-blue-600">Delhi</h3>
-                      <p>Medium Demand: ₹1.8L</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-lg">
+                    <h2 className="text-2xl font-semibent mb-4">Transportation Network</h2>
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=300&fit=crop" 
+                         alt="Transportation Network" className="w-full h-48 object-cover rounded-lg mb-4" />
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center p-3 bg-green-50 rounded">
+                        <span>Mumbai → Pune</span>
+                        <span className="font-semibold text-green-600">₹45,000 saved</span>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-yellow-50 rounded">
+                        <span>Delhi → Gurgaon</span>
+                        <span className="font-semibold text-yellow-600">In Transit</span>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
+                        <span>Bangalore → Mysore</span>
+                        <span className="font-semibold text-blue-600">₹32,000 saved</span>
+                      </div>
                     </div>
-                    <div className="text-center p-4 bg-green-50 rounded">
-                      <h3 className="font-bold text-green-600">Bangalore</h3>
-                      <p>High Demand: ₹2.1L</p>
-                    </div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop" 
+                         alt="Warehouse" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h3 className="font-bold text-green-600 mb-2">Bangalore Hub</h3>
+                    <p className="text-sm text-gray-600">High Demand Region</p>
+                    <p className="font-semibold text-2xl text-green-600">₹2.1L</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=200&fit=crop" 
+                         alt="Distribution Center" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h3 className="font-bold text-blue-600 mb-2">Chennai Hub</h3>
+                    <p className="text-sm text-gray-600">Medium Demand</p>
+                    <p className="font-semibold text-2xl text-blue-600">₹1.5L</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=200&fit=crop" 
+                         alt="Supply Chain" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h3 className="font-bold text-purple-600 mb-2">Hyderabad Hub</h3>
+                    <p className="text-sm text-gray-600">Growing Market</p>
+                    <p className="font-semibold text-2xl text-purple-600">₹1.9L</p>
                   </div>
                 </div>
               </div>
@@ -51,25 +95,83 @@ const App = () => (
           } />
           <Route path="/donations" element={
             <div className="p-6 bg-gradient-to-br from-green-50 to-blue-50 min-h-screen">
-              <div className="max-w-4xl mx-auto">
-                <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
+              <div className="max-w-6xl mx-auto">
+                <h1 className="text-4xl font-bold mb-6 flex items-center gap-3">
                   ❤️ Save the Food & Donate - India Initiative
+                  <span className="text-2xl">🇮🇳</span>
                 </h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                   <div className="bg-white rounded-lg p-6 shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400" alt="Food Donation" className="w-full rounded-lg mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">Akshaya Patra Foundation</h3>
-                    <p className="text-muted-foreground mb-4">Feeding underprivileged children across India</p>
-                    <div className="bg-green-50 p-3 rounded">
-                      <p className="text-green-700 font-semibold">18,500 meals donated this month</p>
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=400&fit=crop" 
+                         alt="Food Donation Drive" className="w-full h-48 object-cover rounded-lg mb-4" />
+                    <h3 className="text-2xl font-semibold mb-3">Akshaya Patra Foundation</h3>
+                    <p className="text-gray-600 mb-4">Feeding underprivileged children across India with nutritious meals</p>
+                    <div className="bg-green-50 p-4 rounded-lg mb-4">
+                      <p className="text-green-700 font-semibold text-lg">18,500 meals donated this month</p>
+                      <p className="text-sm text-green-600">Impact: 2,340 kg food saved from waste</p>
                     </div>
+                    <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                      Donate Now - ₹5,000 worth
+                    </button>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400" alt="Community Kitchen" className="w-full rounded-lg mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">Robin Hood Army</h3>
-                    <p className="text-muted-foreground mb-4">Zero waste, zero hunger initiative</p>
-                    <div className="bg-blue-50 p-3 rounded">
-                      <p className="text-blue-700 font-semibold">2,340 kg food saved from waste</p>
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=400&fit=crop" 
+                         alt="Community Kitchen" className="w-full h-48 object-cover rounded-lg mb-4" />
+                    <h3 className="text-2xl font-semibold mb-3">Robin Hood Army</h3>
+                    <p className="text-gray-600 mb-4">Zero waste, zero hunger initiative connecting surplus food to those in need</p>
+                    <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                      <p className="text-blue-700 font-semibold text-lg">12,400 people fed this week</p>
+                      <p className="text-sm text-blue-600">Impact: 1,850 kg food redistributed</p>
+                    </div>
+                    <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                      Schedule Pickup - ₹3,200 worth
+                    </button>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1609501676725-7186f734c2b8?w=300&h=200&fit=crop" 
+                         alt="Fresh Vegetables" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h4 className="font-semibold mb-2">Fresh Vegetables</h4>
+                    <p className="text-sm text-gray-600">Ready for donation</p>
+                    <p className="font-bold text-green-600">₹8,500 worth</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03246963d17f?w=300&h=200&fit=crop" 
+                         alt="Dairy Products" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h4 className="font-semibold mb-2">Dairy Products</h4>
+                    <p className="text-sm text-gray-600">Expires in 2 days</p>
+                    <p className="font-bold text-orange-600">₹4,200 worth</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&h=200&fit=crop" 
+                         alt="Bread Products" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h4 className="font-semibold mb-2">Bakery Items</h4>
+                    <p className="text-sm text-gray-600">Same day pickup</p>
+                    <p className="font-bold text-red-600">₹2,800 worth</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop" 
+                         alt="Packaged Foods" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h4 className="font-semibold mb-2">Packaged Foods</h4>
+                    <p className="text-sm text-gray-600">Long shelf life</p>
+                    <p className="font-bold text-blue-600">₹6,400 worth</p>
+                  </div>
+                </div>
+                <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-lg p-8 text-center">
+                  <h2 className="text-3xl font-bold mb-4">Total Impact This Month</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                      <h3 className="text-4xl font-bold">₹2.8 Cr</h3>
+                      <p className="text-green-100">Food Value Donated</p>
+                    </div>
+                    <div>
+                      <h3 className="text-4xl font-bold">45,000</h3>
+                      <p className="text-green-100">Meals Provided</p>
+                    </div>
+                    <div>
+                      <h3 className="text-4xl font-bold">8,200 kg</h3>
+                      <p className="text-green-100">Waste Prevented</p>
                     </div>
                   </div>
                 </div>
@@ -118,38 +220,95 @@ const App = () => (
           <Route path="/ai-inventory" element={
             <div className="p-6 bg-gradient-to-br from-indigo-50 to-cyan-50 min-h-screen">
               <div className="max-w-6xl mx-auto">
-                <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
+                <h1 className="text-4xl font-bold mb-6 flex items-center gap-3">
                   🤖 AI-Based Inventory Balancing - India
+                  <span className="text-2xl">🇮🇳</span>
                 </h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                   <div className="bg-white rounded-lg p-6 shadow-lg">
-                    <h3 className="text-xl font-semibold mb-4">Inventory Health Score</h3>
+                    <h3 className="text-2xl font-semibold mb-4">AI Analytics Dashboard</h3>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" 
+                         alt="AI Analytics Dashboard" className="w-full h-48 object-cover rounded-lg mb-4" />
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-green-600 mb-2">92% ✅</div>
-                      <p className="text-muted-foreground">Overall inventory optimization across India</p>
+                      <div className="text-5xl font-bold text-green-600 mb-2">94% ✅</div>
+                      <p className="text-gray-600 font-medium">Overall inventory optimization across India</p>
+                      <div className="mt-4 p-3 bg-green-50 rounded-lg">
+                        <p className="text-sm text-green-700">AI has prevented ₹4.2 Cr in potential losses this quarter</p>
+                      </div>
                     </div>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-lg">
-                    <h3 className="text-xl font-semibold mb-4">AI Predictions</h3>
-                    <div className="space-y-3">
-                      <div className="flex justify-between">
-                        <span>Diwali demand spike</span>
-                        <span className="font-semibold text-orange-600">+340%</span>
+                    <h3 className="text-2xl font-semibold mb-4">Predictive Analytics</h3>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop" 
+                         alt="Predictive Analytics" className="w-full h-48 object-cover rounded-lg mb-4" />
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                        <span className="font-medium">Diwali demand spike</span>
+                        <span className="font-bold text-orange-600">+340%</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span>Monsoon impact</span>
-                        <span className="font-semibold text-blue-600">-15%</span>
+                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                        <span className="font-medium">Monsoon impact</span>
+                        <span className="font-bold text-blue-600">-15%</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span>Regional preference shift</span>
-                        <span className="font-semibold text-green-600">+25%</span>
+                      <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                        <span className="font-medium">Regional preference shift</span>
+                        <span className="font-bold text-green-600">+25%</span>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=200&fit=crop" 
+                         alt="Machine Learning" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h4 className="font-bold text-blue-600 mb-2">Machine Learning</h4>
+                    <p className="text-sm text-gray-600">Advanced algorithms</p>
+                    <p className="font-semibold text-2xl text-blue-600">97.8%</p>
+                    <p className="text-xs text-gray-500">Accuracy Rate</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop" 
+                         alt="Data Analytics" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h4 className="font-bold text-green-600 mb-2">Data Processing</h4>
+                    <p className="text-sm text-gray-600">Real-time analysis</p>
+                    <p className="font-semibold text-2xl text-green-600">2.4M</p>
+                    <p className="text-xs text-gray-500">Data Points/Day</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-lg text-center">
+                    <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&h=200&fit=crop" 
+                         alt="Automation" className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h4 className="font-bold text-purple-600 mb-2">Automation</h4>
+                    <p className="text-sm text-gray-600">Smart decisions</p>
+                    <p className="font-semibold text-2xl text-purple-600">85%</p>
+                    <p className="text-xs text-gray-500">Automated Tasks</p>
+                  </div>
+                </div>
                 <div className="bg-white rounded-lg p-6 shadow-lg">
-                  <h3 className="text-xl font-semibold mb-4">Demand Forecasting - Indian Cities</h3>
-                  <img src="https://via.placeholder.com/800x300/3b82f6/ffffff?text=AI+Demand+Forecasting+Chart" alt="AI Forecasting" className="w-full rounded-lg" />
+                  <h3 className="text-2xl font-semibold mb-4">AI Demand Forecasting - Indian Cities</h3>
+                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=400&fit=crop" 
+                       alt="AI Demand Forecasting Chart" className="w-full h-64 object-cover rounded-lg mb-4" />
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="text-center p-3 bg-blue-50 rounded-lg">
+                      <h4 className="font-semibold text-blue-600">Mumbai</h4>
+                      <p className="text-sm text-gray-600">High Growth</p>
+                      <p className="font-bold text-green-600">↗ +18%</p>
+                    </div>
+                    <div className="text-center p-3 bg-green-50 rounded-lg">
+                      <h4 className="font-semibold text-green-600">Delhi</h4>
+                      <p className="text-sm text-gray-600">Stable</p>
+                      <p className="font-bold text-blue-600">→ +5%</p>
+                    </div>
+                    <div className="text-center p-3 bg-purple-50 rounded-lg">
+                      <h4 className="font-semibold text-purple-600">Bangalore</h4>
+                      <p className="text-sm text-gray-600">Rapid Growth</p>
+                      <p className="font-bold text-green-600">↗ +22%</p>
+                    </div>
+                    <div className="text-center p-3 bg-orange-50 rounded-lg">
+                      <h4 className="font-semibold text-orange-600">Chennai</h4>
+                      <p className="text-sm text-gray-600">Moderate</p>
+                      <p className="font-bold text-blue-600">↗ +12%</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
